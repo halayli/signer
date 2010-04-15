@@ -1,4 +1,22 @@
-signer_common.c & signer_common.h is the signer library used by signer.c to sign executables.
+supports FreeBSD ONLY for now.
+
+signer/verifier allows you to sign elf32 binary executables and give them 
+expiration date to execute. Verification makes sure that the binary  is signed
+and hasn't expired or been tampered with.
+
+The verification should take place from the shell before it runs the executable.
+Use verifier.o when recompiling the shell.
+
+
+To verify binaries from your program (ex. shell), add verifier.o to the 
+linked objects when compiling, and call
+verify_binary(char * file, char *cacert) 
+
+returns 0 upon successful verification.
+
+-----------------
+signer_common.c & signer_common.h is the signer library used by signer.c to 
+sign executables.
 
 verifier.c depends on signer_common library to verify signed executables.
 
@@ -12,6 +30,4 @@ make verifier_test
 
 To compiler verifier.o, run:
 make verifier.o
-
-To verify binaries from your program, add verifier.o to the linked objects when compiling, and call
-verify_binary(char *, char *) from your code.
+-----------------
