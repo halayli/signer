@@ -1,0 +1,17 @@
+signer_common.c & signer_common.h is the signer library used by signer.c to sign executables.
+
+verifier.c depends on signer_common library to verify signed executables.
+
+verifier_unittest.c is an example of how to verify an executable.
+
+To compile signer, run:
+make
+
+To compile verifier_unittest.c, run:
+make verifier_test
+
+To compiler verifier.o, run:
+make verifier.o
+
+To verify binaries from your program, add verifier.o to the linked objects when compiling, and call
+verify_binary(char *, char *) from your code.
